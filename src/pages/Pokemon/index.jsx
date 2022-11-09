@@ -37,18 +37,56 @@ export default function Pokemon() {
 					<p>Carregando...</p>
 				)
 			) : (
-				<>
-					<button onClick={() => navigate(-1)}>
+				<main
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "center",
+						gap: "1rem",
+						paddingTop: "20rem",
+						position: "relative",
+					}}
+				>
+					<button
+						onClick={() => navigate(-1)}
+						style={{
+							position: "absolute",
+							top: "1rem",
+							left: "1rem",
+						}}
+					>
 						<Icon icon="eva:arrow-back-outline" />
 					</button>
-					<h1>{capitalize(pokemon.name)}</h1>
-					<img
-						src={pokemon.sprites.front_default}
-						alt={pokemon.name}
-					/>
-					<p>Altura: {pokemon.height}</p>
-					<p>Peso: {pokemon.weight}</p>
-				</>
+					<div
+						style={{
+							position: "relative",
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "center",
+							gap: "1rem",
+							background: "#fff",
+							color: "#232323",
+							borderRadius: "3rem",
+							width: "100%",
+							height: "100%",
+						}}
+					>
+						<img
+							src={pokemon.sprites.front_default}
+							alt={pokemon.name}
+							style={{
+								width: "25rem",
+								position: "absolute",
+								top: "-1em",
+							}}
+						/>
+						<h2>{capitalize(pokemon.name)}</h2>
+						<p>Altura: {pokemon.height}</p>
+						<p>Peso: {pokemon.weight}</p>
+					</div>
+				</main>
 			)}
 		</div>
 	)
