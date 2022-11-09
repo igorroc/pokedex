@@ -13,7 +13,6 @@ export default function CardPokemon(props) {
 		fetch(props.api)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data)
 				setPokemon(data)
 				setTypeColor(TypeColor[data.types[0].type.name])
 				setUrl(`./pokemon/${data.id}`)
