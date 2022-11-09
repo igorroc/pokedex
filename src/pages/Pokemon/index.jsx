@@ -9,6 +9,7 @@ export default function Pokemon() {
 
 	const [pokemon, setPokemon] = useState([])
 	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState(false)
 
 	useEffect(() => {
 		fetch("https://pokeapi.co/api/v2/pokemon/" + id)
@@ -17,12 +18,24 @@ export default function Pokemon() {
 				setLoading(false)
 				setPokemon(data)
 			})
+			.catch((err) => {
+				console.log(err)
+				setError(true)
+				setLoading(true)
+			})
 	}, [])
 
 	return (
 		<div>
 			{loading ? (
-				<p>Carregando...</p>
+				error ? (
+					<div>
+						<h1>Erro ao carregar o pokemon</h1>
+						<button onClick={() => navigate(-1)}>Voltar</button>
+					</div>
+				) : (
+					<p>Carregando...</p>
+				)
 			) : (
 				<>
 					<button onClick={() => navigate(-1)}>
